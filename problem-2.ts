@@ -4,9 +4,10 @@
     const removeDuplicates = (param: number[]): number[] => {
         const arr: number[] = []
         for (let i = 0; i < param.length; i++) {
-            let num: number = param[i];
-            if (num !== param[i]) {
-                arr.push(num);
+            if (arr.includes(param[i])) {
+                continue;
+            } else {
+                arr.push(param[i]);
             }
         }
         return arr;
