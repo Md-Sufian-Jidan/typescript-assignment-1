@@ -1,0 +1,38 @@
+Q:How to handle asynchronous operations using async/await over callback/promise TypeScript.
+
+Answer:- Handling Asynchronous Operations in TypeScript with Async/Await
+Asynchronous operations in JavaScript such as API calls, file reads, or database queries are handled using callbacks, promises, and async/await. TypeScript makes this process more type-safe.
+
+Disadvantages of Callbacks
+Using callbacks often creates callback hell in the code:
+getData((data) => {
+    processData(data, (result) => {
+        saveData(result, () => {
+            console.log("Done!");
+        });
+    });
+});
+
+Advantages of Promises
+Promises make code a little cleaner:
+fetchData()
+    .then(data => processData(data))
+    .then(result => saveData(result))
+    .catch(err => console.error(err));
+
+The Power of Async/Await
+Using Async/Await makes code more readable and looks more synchronous.
+const fetchAndSave = async () => {
+    try {
+        const data = await fetchData();
+        const result = await processData(data);
+        await saveData(result);
+        console.log("Done!");
+    } catch (error) {
+        console.error(error);
+    }
+};
+Why is Async/Await better?
+1) Code is easier to read.
+2) Error handling is easy with try/catch.
+3) Type checking makes TypeScript easy.

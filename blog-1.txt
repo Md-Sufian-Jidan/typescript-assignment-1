@@ -1,0 +1,32 @@
+Q:-The significance of union and intersection types in Typescript.
+
+Answer: Union and Intersection type is one of the powerful features of Typescript.It makes the code more secure, readable and easy to present.
+
+What is union types?
+=> Union type is use when a variable can hold many types.
+Example:
+let value : string | number;
+value = "Hello";
+value = 42;
+In that case value has to be string or number.
+
+Use cases:
+1) When input comes in different formats.
+2) Type checking easy.
+3) Make the code more flexible.
+
+What is Intersection type?
+=> Intersection type is use when we want to create an object with the use of many types.
+Example:
+type Person = {name: string};
+type Employee = {employeeId: number};
+type Staff = Person & Employee;
+
+const staff : Staff = {name: "Jidan", employeeId: 333};
+
+In this example type staff has to fulfill the type of Person and the type of Employee.
+
+Use cases:
+1) It is use to create difficult data model.
+2) It is helpful to use many property in one object.
+3) Increase code reusability

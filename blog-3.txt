@@ -1,0 +1,52 @@
+Q:- Why are Type Guards Necessary? Discuss Various Types of Type Guards and Their Use Cases.
+
+Answer: One of the strengths of TypeScript is Type Safety. But when a variable can be of more than one type, it needs to be checked at runtime to see which type it is. This is where Type Guards come in.
+
+What are Type Guards?
+
+Type Guards are functions or conditions that tell TypeScript which type is currently being used.
+type Circle = { shape: "circle"; radius: number };
+type Rectangle = { shape: "rectangle"; width: number; height: number };
+
+function calculateArea(shape: Circle | Rectangle): number {
+    if (shape.shape === "circle") {
+        return Math.PI * shape.radius * shape.radius;
+    } else {
+        return shape.width * shape.height;
+    }
+}
+Here if (shape.shape === "circle") is the Type Guard.
+Types of Type Guards
+typeof Type Guard
+function printId(id: string | number) {
+    if (typeof id === "string") {
+        console.log(id.toUpperCase());
+    } else {
+        console.log(id);
+    }
+}
+
+instanceof Type Guard
+class Dog { bark() {} }
+class Cat { meow() {} }
+
+function animalSound(animal: Dog | Cat) {
+    if (animal instanceof Dog) {
+        animal.bark();
+    } else {
+        animal.meow();
+    }
+}
+
+Custom Type Guard (User-defined)
+type Admin = { role: "admin"; name: string };
+type User = { role: "user"; name: string };
+
+function isAdmin(person: Admin | User): person is Admin {
+    return person.role === "admin";
+}
+
+Practical Importance
+1) Helps in handling complex Union Types.
+2) Ensures correct typing at runtime.
+3) Reduces errors and makes code safe.
